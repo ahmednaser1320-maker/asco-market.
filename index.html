@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أسكو ماركت</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF3EC;--surf:#fff;--ink:#14281D;--mut:#5E7266;--g:#14503A;--g2:#1F7A55;--amb:#E3A008;--line:#D5E0D6;--soft:#E1ECE2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A14;--surf:#16261D;--ink:#E7F0E9;--mut:#9DB3A4;--g:#2E9A6F;--g2:#3DB583;--line:#274034;--soft:#1D3327}}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cairo',Tahoma,Arial,sans-serif;line-height:1.6;padding-bottom:84px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--g);z-index:30}
+header{background:var(--g);color:#fff;padding:14px 16px 18px;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:40px;height:40px;border-radius:12px 12px 12px 4px;background:var(--amb);display:grid;place-items:center;font-weight:800;font-size:20px;color:#14281D}
+.brand h1{margin:0;font-size:22px;font-weight:800}
+.brand small{opacity:.8;display:block;font-size:12px;margin-top:-4px}
+.search{margin-top:12px;width:100%;border:0;border-radius:12px;padding:11px 14px;font:inherit;background:#fff;color:#14281D}
+main{max-width:760px;margin:0 auto;padding:14px 14px}
+.view{display:none}.view.on{display:block}
+h2{font-size:18px;margin:6px 0 10px}
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.cat{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:14px;text-align:right;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.cat:first-child{grid-column:1/-1;background:var(--g);color:#fff;border-color:var(--g)}
+.cat .ic{font-size:28px}.cat b{font-size:16px}.cat span{font-size:12px;color:var(--mut)}
+.cat:first-child span{color:#cfe6d8}
+.promo{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{border-radius:16px;padding:14px;border:0;font:inherit;text-align:right;cursor:pointer;color:#14281D;background:var(--amb)}
+.tile.b{background:var(--soft);color:var(--ink)}
+.tile b{display:block;font-size:16px}.tile span{font-size:12px;opacity:.85}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:6px}
+.chip{flex:none;border:1px solid var(--line);background:var(--surf);color:var(--ink);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--g);color:#fff;border-color:var(--g)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:4px}
+.thumb{height:78px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:38px}
+.card h3{margin:4px 0 0;font-size:15px;line-height:1.35}
+.card p{margin:0;font-size:12px;color:var(--mut);flex:1}
+.price{font-weight:800;color:var(--g2)}
+.btn{border:0;border-radius:12px;background:var(--g);color:#fff;padding:9px 12px;font:inherit;font-weight:600;cursor:pointer;width:100%}
+.btn.sec{background:var(--soft);color:var(--ink)}
+.btn.wa{background:#1FA855}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--amb);outline-offset:2px}
+.box{background:var(--surf);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px}
+label{display:block;font-size:13px;color:var(--mut);margin:8px 0 3px}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;background:var(--bg);color:var(--ink)}
+.res{margin-top:10px;background:var(--soft);border-radius:12px;padding:12px;font-weight:600}
+.res b{color:var(--g2);font-size:18px}
+.row{display:flex;gap:8px}.row>*{flex:1}
+.chat{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.msg{max-width:86%;padding:10px 12px;border-radius:14px;font-size:14px}
+.msg.me{align-self:flex-start;background:var(--g);color:#fff;border-end-start-radius:4px}
+.msg.eng{align-self:flex-end;background:var(--surf);border:1px solid var(--line);border-end-end-radius:4px}
+.eng-head{display:flex;gap:10px;align-items:center}
+.av{width:46px;height:46px;border-radius:50%;background:var(--amb);display:grid;place-items:center;font-size:24px}
+.eng-head small{color:var(--mut);display:block}
+.ci{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.ci:last-child{border:0}.ci div{flex:1;font-size:14px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--surf);color:var(--ink);font-size:16px;cursor:pointer}
+.total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin:12px 0}
+.empty{text-align:center;color:var(--mut);padding:28px 10px}
+nav{position:fixed;inset:auto 0 0;background:var(--surf);border-top:1px solid var(--line);display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:25}
+nav button{flex:1;border:0;background:none;color:var(--mut);font:inherit;font-size:11px;cursor:pointer;padding:4px 0;position:relative}
+nav button i{display:block;font-style:normal;font-size:21px}
+nav button.on{color:var(--g2);font-weight:800}
+.badge{position:absolute;top:0;inset-inline-start:50%;margin-inline-start:6px;background:var(--amb);color:#14281D;border-radius:99px;font-size:10px;min-width:17px;padding:0 4px;font-weight:800}
+.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:99px;font-size:13px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">أ</div><div><h1>أسكو ماركت</h1><small>كل ما يحتاجه زرعك في مكان واحد</small></div></div>
+  <input class="search" id="q" type="search" placeholder="ابحث عن مبيد أو سماد أو مخصب..." aria-label="بحث">
+</header>
+<main>
+  <section class="view on" id="v-home">
+    <h2>الأقسام</h2>
+    <div class="cats" id="cats"></div>
+    <div class="promo">
+      <button class="tile" onclick="go('ask')"><b>👨‍🌾 اسأل مهندس</b><span>صوّر المشكلة واحصل على الحل</span></button>
+      <button class="tile b" onclick="go('calc')"><b>🧮 الحاسبة الزراعية</b><span>جرعات ومساحات في ثواني</span></button>
+    </div>
+    <h2 style="margin-top:18px">الأكثر طلبًا</h2>
+    <div class="grid" id="top"></div>
+  </section>
+
+  <section class="view" id="v-shop">
+    <div class="chips" id="chips"></div>
+    <div class="grid" id="list"></div>
+    <div class="empty" id="none" hidden>لا توجد منتجات مطابقة لبحثك.</div>
+  </section>
+
+  <section class="view" id="v-ask">
+    <div class="box eng-head"><div class="av">👨‍🌾</div><div><b>مهندس أسكو الزراعي</b><small>يرد عادةً خلال ساعات العمل</small></div></div>
+    <div class="chat" id="chat"></div>
+    <div class="box">
+      <label for="crop">المحصول</label>
+      <select id="crop"><option>طماطم</option><option>خيار</option><option>فلفل</option><option>بطاطس</option><option>قمح</option><option>ذرة</option><option>عنب</option><option>موالح</option><option>نخيل</option><option>أخرى</option></select>
+      <label for="msgtxt">وصف المشكلة</label>
+      <textarea id="msgtxt" rows="3" placeholder="مثال: بقع صفراء على الأوراق السفلية وبتنتشر بسرعة"></textarea>
+      <label for="nm">اسمك ورقم الموبايل</label>
+      <input id="nm" placeholder="الاسم - 01xxxxxxxxx">
+      <div class="row" style="margin-top:10px">
+        <button class="btn" onclick="sendQ(false)">إرسال السؤال</button>
+        <button class="btn wa" onclick="sendQ(true)">واتساب المهندس</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="v-calc">
+    <div class="chips" id="ctabs"></div>
+    <div id="calcbody"></div>
+  </section>
+
+  <section class="view" id="v-cart">
+    <h2>سلة الطلبات</h2>
+    <div class="box" id="cartbox"></div>
+  </section>
+</main>
+<nav id="nav"></nav>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===== الإعدادات ===== */
+var WHATSAPP = "201000000000";           // غيّر الرقم لرقم أسكو (بصيغة دولية بدون +)
+var CATS = [
+ {id:"all",n:"كل المنتجات",ic:"🛒",d:"تصفح المتجر بالكامل"},
+ {id:"fert",n:"أسمدة",ic:"🌱",d:"NPK ويوريا وعناصر"},
+ {id:"org",n:"مبيدات عضوية",ic:"🍃",d:"آمنة للتصدير"},
+ {id:"ins",n:"مبيدات حشرية",ic:"🐛",d:"للمن والذبابة والحفار"},
+ {id:"fun",n:"مبيدات فطرية",ic:"🍄",d:"للبياض والندوة واللفحة"},
+ {id:"boost",n:"مخصبات",ic:"✨",d:"أحماض أمينية وهيوميك"}
+];
+var P = [
+ {id:1,c:"fert",n:"سماد NPK 19-19-19",d:"ذائب بالكامل - 25 كجم",p:1450,ic:"🌱",hot:1},
+ {id:2,c:"fert",n:"يوريا 46%",d:"نيتروجين عالي - 50 كجم",p:980,ic:"🧪"},
+ {id:3,c:"fert",n:"سلفات بوتاسيوم",d:"للإثمار وجودة الثمار - 25 كجم",p:1650,ic:"🥔"},
+ {id:4,c:"fert",n:"نترات الكالسيوم",d:"يمنع عفن الطرف الزهري - 25 كجم",p:1100,ic:"🍅",hot:1},
+ {id:5,c:"org",n:"زيت النيم العضوي",d:"طارد للحشرات - 1 لتر",p:230,ic:"🍃",hot:1},
+ {id:6,c:"org",n:"بي تي (Bt) حيوي",d:"لدودة ورق القطن - 500 جم",p:320,ic:"🦠"},
+ {id:7,c:"org",n:"صابون بوتاسي زراعي",d:"لمكافحة المن والذبابة - 1 لتر",p:150,ic:"🧼"},
+ {id:8,c:"ins",n:"مبيد حشري سيبرمثرين",d:"واسع المدى - 1 لتر",p:210,ic:"🐛"},
+ {id:9,c:"ins",n:"إيميداكلوبريد 20%",d:"للمن والذبابة البيضاء - 250 مل",p:185,ic:"🪰",hot:1},
+ {id:10,c:"ins",n:"أبامكتين",d:"للعنكبوت الأحمر والتربس - 250 مل",p:260,ic:"🕷️"},
+ {id:11,c:"fun",n:"كبريت ميكرونيزي",d:"للبياض الدقيقي - 1 كجم",p:95,ic:"🍄"},
+ {id:12,c:"fun",n:"نحاس أوكسي كلوريد",d:"للندوة واللفحة - 1 كجم",p:240,ic:"🥬",hot:1},
+ {id:13,c:"fun",n:"أزوكسيستروبين",d:"واسع المدى جهازي - 250 مل",p:390,ic:"🛡️"},
+ {id:14,c:"boost",n:"أحماض أمينية 40%",d:"تقلل إجهاد الحرارة - 1 لتر",p:310,ic:"✨",hot:1},
+ {id:15,c:"boost",n:"هيوميك أسيد",d:"يحسن التربة والجذور - 5 لتر",p:420,ic:"🌿"},
+ {id:16,c:"boost",n:"عناصر صغرى مخلبية",d:"حديد وزنك ومنجنيز - 1 كجم",p:280,ic:"💎"}
+];
+var cart = {}, cat = "all", chat = [];
+function $(i){return document.getElementById(i)}
+function ls(k,v){try{if(v===undefined){var r=localStorage.getItem(k);return r?JSON.parse(r):null}localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
+cart = ls("asco_cart")||{}; chat = ls("asco_chat")||[];
+function fmt(n){return Number(n).toLocaleString("ar-EG",{maximumFractionDigits:2})}
+function toast(t){var e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("on")},1600)}
+
+/* ===== التنقل ===== */
+var NAV=[["home","🏠","الرئيسية"],["shop","🛍️","المتجر"],["ask","👨‍🌾","اسأل مهندس"],["calc","🧮","الحاسبة"],["cart","🧺","السلة"]];
+function go(v){
+  document.querySelectorAll(".view").forEach(function(e){e.classList.toggle("on",e.id==="v-"+v)});
+  renderNav(v); window.scrollTo(0,0);
+  if(v==="cart")renderCart(); if(v==="ask")renderChat(); if(v==="shop")renderList();
+}
+function cartCount(){var n=0;for(var k in cart)n+=cart[k];return n}
+function renderNav(a){
+  $("nav").innerHTML=NAV.map(function(x){
+    var b=x[0]==="cart"&&cartCount()?'<span class="badge">'+cartCount()+'</span>':'';
+    return '<button class="'+(x[0]===a?'on':'')+'" onclick="go(\''+x[0]+'\')"><i>'+x[1]+'</i>'+x[2]+b+'</button>'
+  }).join("");
+}
+
+/* ===== المتجر ===== */
+function card(p){
+  return '<div class="card"><div class="thumb">'+p.ic+'</div><h3>'+p.n+'</h3><p>'+p.d+'</p><div class="price">'+fmt(p.p)+' ج.م</div><button class="btn" onclick="add('+p.id+')">أضف للسلة</button></div>';
+}
+function renderHome(){
+  $("cats").innerHTML=CATS.map(function(c){return '<button class="cat" onclick="openCat(\''+c.id+'\')"><span class="ic">'+c.ic+'</span><b>'+c.n+'</b><span>'+c.d+'</span></button>'}).join("");
+  $("top").innerHTML=P.filter(function(p){return p.hot}).slice(0,4).map(card).join("");
+}
+function openCat(c){cat=c;go("shop")}
+function renderList(){
+  $("chips").innerHTML=CATS.map(function(c){return '<button class="chip '+(c.id===cat?'on':'')+'" onclick="cat=\''+c.id+'\';renderList()">'+c.n+'</button>'}).join("");
+  var q=$("q").value.trim();
+  var r=P.filter(function(p){return (cat==="all"||p.c===cat)&&(!q||(p.n+p.d).indexOf(q)>-1)});
+  $("list").innerHTML=r.map(card).join(""); $("none").hidden=r.length>0;
+}
+$("q").addEventListener("input",function(){go("shop")});
+function add(id){cart[id]=(cart[id]||0)+1;ls("asco_cart",cart);renderNav(cur());toast("تمت الإضافة للسلة")}
+function cur(){var a=document.querySelector(".view.on");return a?a.id.slice(2):"home"}
+function chg(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];ls("asco_cart",cart);renderCart();renderNav("cart")}
+function renderCart(){
+  var ids=Object.keys(cart);
+  if(!ids.length){$("cartbox").innerHTML='<div class="empty">السلة فارغة.<br>أضف منتجات من المتجر لتبدأ طلبك.</div><button class="btn" onclick="go(\'shop\')">تصفح المتجر</button>';return}
+  var t=0,h=ids.map(function(i){var p=P.filter(function(x){return x.id==i})[0];var s=p.p*cart[i];t+=s;
+    return '<div class="ci"><span style="font-size:26px">'+p.ic+'</span><div><b>'+p.n+'</b><br><small>'+fmt(s)+' ج.م</small></div><div class="qty"><button onclick="chg('+i+',1)" aria-label="زيادة">+</button><b>'+cart[i]+'</b><button onclick="chg('+i+',-1)" aria-label="نقص">−</button></div></div>'}).join("");
+  $("cartbox").innerHTML=h+'<div class="total"><span>الإجمالي</span><span>'+fmt(t)+' ج.م</span></div>'+
+   '<label for="cn">اسمك</label><input id="cn"><label for="ca">العنوان / القرية</label><input id="ca">'+
+   '<div style="margin-top:12px"><button class="btn wa" onclick="order('+t+')">إرسال الطلب عبر واتساب</button></div>';
+}
+function order(t){
+  var l=["طلب جديد من أسكو ماركت",""];
+  Object.keys(cart).forEach(function(i){var p=P.filter(function(x){return x.id==i})[0];l.push("• "+p.n+" × "+cart[i])});
+  l.push("","الإجمالي: "+t+" ج.م","الاسم: "+($("cn").value||"-"),"العنوان: "+($("ca").value||"-"));
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(l.join("\n")),"_blank");
+}
+
+/* ===== اسأل مهندس ===== */
+function renderChat(){
+  var m=[{w:"eng",t:"أهلًا بك في أسكو 👋 اكتب اسم المحصول ووصف المشكلة وهنرد عليك بالتشخيص والعلاج المناسب."}].concat(chat);
+  $("chat").innerHTML=m.map(function(x){return '<div class="msg '+x.w+'">'+x.t+'</div>'}).join("");
+}
+function esc(s){return s.replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function sendQ(wa){
+  var t=$("msgtxt").value.trim(),c=$("crop").value,n=$("nm").value.trim();
+  if(!t){toast("اكتب وصف المشكلة أولًا");return}
+  if(wa){window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent("سؤال لمهندس أسكو\nالمحصول: "+c+"\nالمشكلة: "+t+"\nالاسم: "+(n||"-")),"_blank");}
+  chat.push({w:"me",t:"<b>"+c+"</b><br>"+esc(t)});
+  chat.push({w:"eng",t:"تم استلام سؤالك ✅ سيرد عليك المهندس قريبًا"+(n?" على البيانات التي أرسلتها.":". اترك رقم موبايلك ليتواصل معك.")});
+  ls("asco_chat",chat); $("msgtxt").value=""; renderChat();
+}
+
+/* ===== الحاسبة الزراعية ===== */
+var CT=[["mix","جرعة المبيد"],["fert","كمية السماد"],["area","تحويل المساحة"]],ct="mix";
+function renderCalc(){
+  $("ctabs").innerHTML=CT.map(function(x){return '<button class="chip '+(x[0]===ct?'on':'')+'" onclick="ct=\''+x[0]+'\';renderCalc()">'+x[1]+'</button>'}).join("");
+  var h="";
+  if(ct==="mix")h='<div class="box"><b>حساب جرعة المبيد</b>'+
+   '<label>جرعة المبيد (سم³ أو جم لكل 100 لتر ماء)</label><input id="a1" type="number" inputmode="decimal" value="150">'+
+   '<label>سعة الموتور / الرشاشة (لتر)</label><input id="a2" type="number" inputmode="decimal" value="20">'+
+   '<label>المساحة (فدان)</label><input id="a3" type="number" inputmode="decimal" value="1">'+
+   '<label>كمية الماء للفدان (لتر)</label><input id="a4" type="number" inputmode="decimal" value="400">'+
+   '<div class="res" id="r"></div></div>';
+  if(ct==="fert")h='<div class="box"><b>حساب كمية السماد</b>'+
+   '<label>المساحة (فدان)</label><input id="a1" type="number" inputmode="decimal" value="2">'+
+   '<label>المعدل (كجم للفدان)</label><input id="a2" type="number" inputmode="decimal" value="100">'+
+   '<label>عدد مرات التسميد</label><input id="a3" type="number" inputmode="decimal" value="1">'+
+   '<label>وزن الشيكارة (كجم)</label><input id="a4" type="number" inputmode="decimal" value="50">'+
+   '<label>سعر الشيكارة (ج.م) - اختياري</label><input id="a5" type="number" inputmode="decimal" value="">'+
+   '<div class="res" id="r"></div></div>';
+  if(ct==="area")h='<div class="box"><b>تحويل المساحة</b>'+
+   '<div class="row"><div><label>القيمة</label><input id="a1" type="number" inputmode="decimal" value="1"></div>'+
+   '<div><label>الوحدة</label><select id="a2"><option value="4200">فدان</option><option value="175">قيراط</option><option value="7.29">سهم</option><option value="4046.86">أكر</option><option value="10000">هكتار</option><option value="1">متر مربع</option></select></div></div>'+
+   '<div class="res" id="r"></div></div>';
+  $("calcbody").innerHTML=h;
+  document.querySelectorAll("#calcbody input,#calcbody select").forEach(function(e){e.addEventListener("input",calc)});
+  calc();
+}
+function v(i){return parseFloat(($(i)||{}).value)||0}
+function calc(){
+  var r=$("r"),o="";
+  if(ct==="mix"){
+    var perL=v("a1")/100, tank=v("a2"), tot=v("a4")*v("a3");
+    o="كمية المبيد في الموتور الواحد: <b>"+fmt(perL*tank)+"</b> سم³/جم<br>"+
+      "إجمالي الماء: <b>"+fmt(tot)+"</b> لتر = <b>"+fmt(tank?Math.ceil(tot/tank):0)+"</b> موتور<br>"+
+      "إجمالي المبيد المطلوب: <b>"+fmt(perL*tot)+"</b> سم³/جم";
+  }
+  if(ct==="fert"){
+    var kg=v("a1")*v("a2")*(v("a3")||1), bags=v("a4")?kg/v("a4"):0;
+    o="إجمالي السماد: <b>"+fmt(kg)+"</b> كجم<br>عدد الشكاير: <b>"+fmt(Math.ceil(bags))+"</b>";
+    if(v("a5"))o+="<br>التكلفة التقريبية: <b>"+fmt(Math.ceil(bags)*v("a5"))+"</b> ج.م";
+  }
+  if(ct==="area"){
+    var m2=v("a1")*v("a2");
+    o="متر مربع: <b>"+fmt(m2)+"</b><br>فدان: <b>"+fmt(m2/4200)+"</b><br>قيراط: <b>"+fmt(m2/175)+"</b><br>أكر: <b>"+fmt(m2/4046.86)+"</b><br>هكتار: <b>"+fmt(m2/10000)+"</b>";
+  }
+  r.innerHTML=o;
+}
+
+/* ===== التشغيل ===== */
+renderHome(); renderCalc(); renderList(); go("home");
+</script>
+</body>
+</html>
